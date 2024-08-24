@@ -22,7 +22,7 @@
   https://github.com/jeffersonjhunt/esp32-idf-nau7802
 */
 
-#include "NAU7802.h"
+#include "nau7802.h"
 
 static const char *TAG = "driver-nau7802"; // tag for logging
 
