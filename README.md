@@ -18,13 +18,13 @@ Repository Contents
 -------------------
 
 - **/examples** - Example code for the library.
-- **/src** - Source files for the library (.cpp, .h).
 - **/licenses** - Attributions.
 
 Documentation
 --------------
 
-- **[Installing an ESP32 Library Guide]()** - Basic information on how to install an ESP32 library.
+- **[IDF Component Registry](https://components.espressif.com)** - Espressif Component Registry
+- **[IDF Component Manager](https://docs.espressif.com/projects/idf-component-manager/en/latest/index.html)** - Information on the Espressif IDF Component Manager.
 - **[Product documentation](https://www.nuvoton.com/export/resource-files/en-us--DS_NAU7802_DataSheet_EN_Rev2.4.pdf)** - Datasheet including I2C documentation.
 
 Notable Changes & Improvements
