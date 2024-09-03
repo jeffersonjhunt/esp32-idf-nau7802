@@ -182,7 +182,7 @@ typedef enum
 class NAU7802
 {
 public:
-  NAU7802( i2c_master_bus_config_t *bus_config, i2c_device_config_t *dev_config ); //Default constructor
+  NAU7802( i2c_master_bus_handle_t *bus_handle, i2c_device_config_t *dev_config ); //Default constructor
   bool begin(bool reset = true); //Check communication and initialize sensor
   bool isConnected();                                      //Returns true if device acks at the I2C address
 
@@ -240,7 +240,7 @@ public:
   bool setChannel1Gain(uint32_t value); //Send a given value to be written to given address. Return true if successful
 
 private:
-  i2c_master_bus_handle_t bus_handle;
+  i2c_master_bus_handle_t *bus_handle;
   i2c_master_dev_handle_t dev_handle;
 
   const uint8_t _deviceAddress = 0x2A; //Default unshifted 7-bit address of the NAU7802

@@ -27,12 +27,12 @@
 static const char *TAG = "driver-nau7802"; // tag for logging
 
 //Constructor
-NAU7802::NAU7802(  i2c_master_bus_config_t *bus_config, i2c_device_config_t *dev_config )
+NAU7802::NAU7802( i2c_master_bus_handle_t *bus_handle, i2c_device_config_t *dev_config )
 {
     // initialize device
-    ESP_ERROR_CHECK(i2c_new_master_bus(bus_config, &bus_handle));
-    ESP_ERROR_CHECK(i2c_master_bus_reset(bus_handle));
-    ESP_ERROR_CHECK(i2c_master_bus_add_device(bus_handle, dev_config, &dev_handle));
+    this->bus_handle = bus_handle;
+    ESP_ERROR_CHECK(i2c_master_bus_reset(*this->bus_handle));
+    ESP_ERROR_CHECK(i2c_master_bus_add_device(*this->bus_handle, dev_config, &dev_handle));
 }
 
 //Sets up the NAU7802 for basic function
@@ -86,7 +86,7 @@ bool NAU7802::begin(bool initialize)
 //Tests for device ack to I2C address
 bool NAU7802::isConnected()
 {
-  ESP_ERROR_CHECK(i2c_master_probe(bus_handle, NAU7802_I2CADDR_DEFAULT, 10)); // probe device
+  ESP_ERROR_CHECK(i2c_master_probe(*this->bus_handle, NAU7802_I2CADDR_DEFAULT, 10)); // probe device
   return (true);    //All good  
 }
 
