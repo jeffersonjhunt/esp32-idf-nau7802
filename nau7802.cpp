@@ -86,7 +86,12 @@ bool NAU7802::begin(bool initialize)
 //Tests for device ack to I2C address
 bool NAU7802::isConnected()
 {
-  ESP_ERROR_CHECK(i2c_master_probe(*this->bus_handle, NAU7802_I2CADDR_DEFAULT, 10)); // probe device
+  esp_err_t probe_result = i2c_master_probe(*this->bus_handle, NAU7802_I2CADDR_DEFAULT, 10); // probe device
+  if (result != ESP_OK)
+  {
+    ESP_LOGW(TAG, "Error while probing: %s", esp_err_to_name(result));
+    return false;
+  }
   return (true);    //All good  
 }
 
